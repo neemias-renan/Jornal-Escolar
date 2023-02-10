@@ -1,0 +1,17 @@
+{% extends "inrite/base_second.html" %}
+{% load static %}
+
+{% block statics %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<!-- <script src="{% static 'inrite/js/animations.js' %}"></script> -->
+{% endblock statics %}
+
+{% block content %}
+<section class="padding-default margin-top-5">
+    <h2 class="fs-h2 bold">Cadastre-se</h2>
+    <form action="">
+        <input type="email" placeholder="Digite seu email">
+        <input type="password" name="" id="">
+    </form>
+</section>
+{% endblock content %}

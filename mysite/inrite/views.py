@@ -108,3 +108,19 @@ class ManagerView(View):
 
         News.objects.create(title = new_title, body = new_content, description=new_description, edition = edition)
         return HttpResponseRedirect(reverse('inrite:index'))
+
+class LoginView(View):
+    def get(self, request, *args, **kwargs):
+        context = {}
+        return render(request, 'inrite/login.html', context)
+    
+    def post(self, request, *args, **kwargs):
+        return HttpResponseRedirect(reverse('inrite:index'))
+
+class SignupView(View):
+    def get(self, request, *args, **kwargs):
+        context = {}
+        return render(request, 'inrite/signup.html', context)
+
+    def post(self, request, *args, **kwargs):
+        return HttpResponseRedirect(reverse('inrite:index'))

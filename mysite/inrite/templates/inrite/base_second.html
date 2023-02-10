@@ -19,13 +19,14 @@
                 <ul class="row height-5">
                     <li class="row justify-content-center ol-search">
                         
-                        <form  class="fs-p-18 bold uppercase padding-20px search" action="{% url 'inrite:search' %}" method="post">
+                        <form  class="fs-p-18 bold uppercase bolder-rigth-gray padding-20px search" action="{% url 'inrite:search' %}" method="post">
                             {% csrf_token %}
                             <p class="font-color-white">Buscar</p>
                             <input type="text" name="search" class="fs-p-18 bold uppercase width-100 input-search font-color-white" placeholder="Busque aqui">
                         </form>
                     </li>
-                    <li class="column justify-content-center background-color-secondary"><a href="{% url 'inrite:manager'%}" class="fs-p-18 bold uppercase padding-20px font-color-white">Criar Noticia</a></li>
+                    <li class="column justify-content-center   news-li"><a href="{% url 'inrite:manager'%}" class="fs-p-18 bold uppercase font-color-white padding-20px">Criar Noticia</a></li>
+                    <li class="column justify-content-center background-color-secondary login-li"><a href="{% url 'inrite:login'%}" class="fs-p-18 bold uppercase padding-20px font-color-white">Login</a></li>
                 </ul>
             </div>           
         </div>
