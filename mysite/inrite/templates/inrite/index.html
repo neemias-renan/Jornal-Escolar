@@ -13,7 +13,7 @@
 
     {% for news in all_news %}
     <a href="{% url 'inrite:new' news.id %}">
-        <div class="width-100 row margin-top-2 gap-2">
+        <div class="div-news width-100 row margin-top-2 gap-2">
             <div class="height-25 width-40">
                 <div class="width-100 height-100p background-cover" style="background-image: url('{{news.image.url}}')">
                 </div>

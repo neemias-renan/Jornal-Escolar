@@ -82,3 +82,12 @@
 .ol-search .search:hover .input-search{
     display: block;
 }
+
+@media (max-width:1500px) {
+    .ol-search .search:hover{
+        width: 26em;
+    }
+    /* .ol-search .search:hover p, .ol-search .search:hover .news-li{
+        display: none;
+    } */
+}

@@ -1,0 +1,12 @@
+.div-news:nth-child(2n){
+    display: flex !important;
+    flex-direction: row-reverse !important;
+    justify-content: flex-start !important;
+}
+
+.div-news:nth-child(2n) .div-datas{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: end;
+}
