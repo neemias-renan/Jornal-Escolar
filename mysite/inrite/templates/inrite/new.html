@@ -1,0 +1,55 @@
+{% extends "inrite/base_second.html" %}
+{% load static %}
+{% load markdown_tag %}
+
+{% block statics %}
+<link rel="stylesheet" href="{% static 'css/new.css' %}">
+<!-- <script src="{% static 'inrite/js/animations.js' %}"></script> -->
+{% endblock statics %}
+
+{% block content %}
+<section class="column gap-3">
+
+    <div class="width-100 height-30 background-cover div-data-new column justify-content-end"
+        style="background: url({{new.image.url}});">
+        <div class="padding-default width-60 margin-bottom-2 data-new column gap-1">
+            <h3 class="fs-h3 bold font-color-white">{{new.title}}</h3>
+
+            <p class="fs-p-18 font-color-white">{{new.description}}</p>
+            <p class="fs-p-16 font-color-secundary">Por {{new.author.name}}</p>
+        </div>
+    </div>
+
+    <div class="padding-default">
+        <div class="div-content-area width-80">
+            {{new.body|convert_markdown|safe}}
+        </div>
+    </div>
+
+    <div class="padding-default">
+        <div class="div-comments">
+            <h4 class="fs-h4 margin-bottom-05">Comentarios</h4>
+
+            {% for comment in all_comments %}
+            <div class="div-space-comment margin-top-1">
+                <p class="fs-p-18 bold">{{comment}}</p> 
+                {% if comment.author.profile.name == null %}
+                <p class="fs-p-16 font-color-secundary">Usuário Anônimo</p>
+                {% else %}
+                <p class="fs-p-16 font-color-secundary">{{comment.author.profile.name}}</p>
+                {% endif %}
+            </div>            
+            {% endfor %}
+
+            <form class="div-space-comment margin-top-1 column align-end" method="post" action="{% url 'inrite:new' new.pk %}">
+                {% csrf_token %}
+                <textarea class="width-all fs-p-18 bold add_commentary height-5" maxlength="350" name="comment" placeholder="Escreva um comentário! Nós queremos saber sua opinião" required></textarea>
+                <button class="uppercase bold font-color-white fs-p-18 background-color-secondary justify-content-center button-submit-comment margin-top-1" type="submit">Enviar</button>
+            </form>     
+
+
+        </div>
+    </div>
+
+</section>
+{% endblock content %}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Inrite</title>
+    {% load static %}
+    {% block statics %}{% endblock statics %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base-header.css' %}">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="background-cover justify-content-space-between column padding-default element-image height-30"
+                style="background-image: url({{first_new.image.url}});">
+                <img class="logo-cover width-7em display-table" src="{% static 'images/svg/logo-max.svg' %}">
+                <div class="padding-bottom-4em">
+                    <h3 class="fs-h3 font-color-white display-table z-index-2 position-relative width-60">{{first_new.title}}</h3>
+                    <p class="fs-p-16 font-color-secundary display-table z-index-2 position-relative margin-top-1">{{first_new.author.name}}</p>
+                </div>
+            </div>
+
+            <nav class="height-5 padding-default justify-content-space-between row">
+                <form class="row height-100p" action="{% url 'inrite:index' %}" method="post">
+                    {% csrf_token %}
+                    <select class="justify-content-center fs-p-18 bold uppercase select-edition width-14em" name="select" onchange="this.form.submit()">
+                            <option class="fs-p-18 bold uppercase link-li height-5"  disabled selected="selected">Outras Edições</option>
+                        {% for edition in all_editions %}
+                            <option class="fs-p-18 bold uppercase link-li height-5" value="{{edition.title}}">{{edition.title}}</option>
+                        {% endfor %}
+                    </select>
+                </form>
+
+                <ul class="row height-100p">
+                    <li class="row justify-content-center background-color-gray ol-search">
+                        
+                        <form  class="fs-p-18 bold uppercase padding-20px search" action="{% url 'inrite:search' %}" method="post">
+                            {% csrf_token %}
+                            <p>Buscar</p>
+                            <input type="text" name="search" class="fs-p-18 bold uppercase width-100 input-search" placeholder="Busque aqui">
+                        </form>
+                    </li>
+                    <li class="column justify-content-center background-color-secondary"><a href="{% url 'inrite:manager'%}" class="fs-p-18 bold uppercase padding-20px font-color-white">Criar Noticia</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <main class="margin-top-5"> 
+        {% block content %}{% endblock content %}
+    </main> 
+
+    <!-- <footer>
+        <div class="container">
+            <p>Copyright © The Intercept</p>
+        </div>
+    </footer> -->
+</body>
+
+</html>

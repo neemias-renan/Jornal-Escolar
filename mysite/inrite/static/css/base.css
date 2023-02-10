@@ -1,0 +1,522 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Brygada+1918:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+
+:root {
+    --font-family-inter: 'Inter', sans-serif;
+    --font-family-brygada: 'Brygada 1918', serif;
+    --font-family-baijamjuree: 'Bai Jamjuree', sans-serif;
+    --background-first: #ffffff;
+    --background-second: #6653ff;
+    --background-gradient: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    --background-black: #161513;
+    --font-color-all: #000;
+
+    --font-color-ligth-primary: #F0F2F5 !important;
+    --font-color-ligth-secundary: #ffffff;
+    --font-color-dark-primary: #161513 !important;
+    --font-color-dark-secundary: #6653ff;
+    --font-color-gradient: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+
+    --color-scrollbar: rgb(12, 12, 12);
+}
+
+body {
+    background: var(--background-first);
+    color: var(--font-color-all);
+    margin: 0;
+}
+
+
+/* Barra de Navegação */
+body::-webkit-scrollbar {
+    width: 35px;
+}
+
+body::-webkit-scrollbar-thumb {
+    border: 12px solid rgb(0, 0, 0, 0);
+    background-clip: padding-box;
+    -webkit-border-radius: 20px;
+    background-color: var(--color-scrollbar);
+}
+
+
+/* Fontes */
+.fs-h1 {
+    font-weight: 700;
+    font-size: 72px;
+    line-height: 125%;
+    font-family: var(--font-family-baijamjuree);
+    width: fit-content;
+    margin: 0;
+}
+
+.fs-h2 {
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 125%;
+    font-family: var(--font-family-baijamjuree);
+    width: fit-content;
+    margin: 0;
+}
+
+.fs-h3 {
+    font-weight: 700;
+    font-size: 50px;
+    line-height: .84;
+    font-family: var(--font-family-baijamjuree);
+    width: fit-content;
+    margin: 0;
+}
+
+.fs-h4 {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 125%;
+    font-family: var(--font-family-baijamjuree);
+    width: fit-content;
+    margin: 0;
+}
+
+.fs-h5 {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 125%;
+    font-family: var(--font-family-inter);
+    width: fit-content;
+    margin: 0;
+}
+
+.fs-h6 {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 125%;
+    font-family: var(--font-family-inter);
+    width: fit-content;
+    margin: 0;
+}
+
+.fs-p-18 {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 30px;
+    font-family: var(--font-family-inter);
+    width: fit-content;
+    margin: 0;
+}
+
+.fs-p-16 {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: var(--font-family-inter);
+    width: fit-content;
+    margin: 0;
+}
+
+
+/* Fontes */
+
+.font-brygada {
+    font-family: var(--font-family-brygada);
+}
+
+/* CORES DAS FONTES */
+.font-color-gradient {
+    background: var(--font-color-gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.font-color-white {
+    color: white;
+}
+
+.font-color-gray {
+    color: rgb(184, 184, 184);
+}
+
+
+.font-color-secundary {
+    color: var(--font-color-dark-secundary);
+}
+
+
+/* BOTÕES */
+
+.button-primary {
+    width: fit-content;
+    padding: 0.7em 1.2em;
+    background: var(--background-gradient);
+    border: none;
+    border-radius: 50px;
+    color: var(--font-color-ligth-primary);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.button-primary:hover {
+    filter: grayscale(1);
+}
+
+.button-secundary {
+    width: fit-content;
+    padding: 0.7em 1.2em;
+    background: none;
+    border: solid 1px #ffffff;
+    border-radius: 50px;
+    color: var(--font-color-ligth-primary);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.button-secundary:hover {
+    background-color: var(--background-second);
+    color: var(--font-color-dark-primary);
+    border: solid 1px var(--background-second);
+}
+
+
+/* Width */
+
+.width-7em {
+    width: 7em;
+}
+
+.width-14em {
+    width: 14em;
+}
+
+.width-10 {
+    width: 10%;
+}
+
+.width-20 {
+    width: 20%;
+}
+
+.width-30 {
+    width: 30%;
+}
+
+.width-40 {
+    width: 40%;
+}
+
+.width-50 {
+    width: 50%;
+}
+
+.width-60 {
+    width: 60%;
+}
+
+.width-70 {
+    width: 70%;
+}
+
+.width-80 {
+    width: 80%;
+}
+
+.width-90 {
+    width: 90%;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+
+.width-all {
+    width: -webkit-fill-available;
+}
+
+/* Heigth */
+.height-3 {
+    height: 3em;
+}
+
+.height-4 {
+    height: 4em;
+}
+
+.height-5 {
+    height: 5em;
+}
+
+.height-10 {
+    height: 10em;
+}
+
+.height-15 {
+    height: 15em;
+}
+
+.height-20 {
+    height: 20em;
+}
+
+.height-25 {
+    height: 25em;
+}
+
+.height-30 {
+    height: 30em;
+}
+
+.height-50 {
+    height: 50em;
+}
+
+.height-100p {
+    height: 100%;
+}
+
+.height-90px {
+    height: 90px;
+}
+
+/* DISPLAYs */
+.display-table {
+    display: table;
+}
+
+/* Display FLEX */
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+/* GAPS */
+
+.gap-1 {
+    gap: 1em;
+}
+
+.gap-2 {
+    gap: 2em;
+}
+
+.gap-3 {
+    gap: 3em;
+}
+
+.gap-4 {
+    gap: 4em;
+}
+
+.gap-5 {
+    gap: 5em;
+}
+
+.gap-6 {
+    gap: 6em;
+}
+
+.gap-7 {
+    gap: 7em;
+}
+
+.gap-8 {
+    gap: 8em;
+}
+
+.gap-9 {
+    gap: 9em;
+}
+
+.gap-10 {
+    gap: 10em;
+}
+
+/* Image-content */
+
+.background-cover {
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+
+/* justify-content */
+.justify-content-space-between {
+    justify-content: space-between;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.justify-content-end {
+    justify-content: flex-end;
+}
+
+/* Align-item */
+.align-center {
+    align-items: center
+}
+
+.align-end {
+    align-items: flex-end;
+}
+
+
+
+/* Padding */
+
+.padding-default {
+    padding: 0em 15em;
+}
+
+.padding-bottom-4em {
+    padding-bottom: 4em;
+}
+
+.padding-20px {
+    padding: 20px;
+}
+
+/* Z-index */
+.z-index-2 {
+    z-index: 2;
+}
+
+/* Position */
+
+.position-relative {
+    position: relative;
+}
+
+
+/* UL & OL & li & a */
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* font-weight */
+
+.bold {
+    font-weight: bold;
+}
+
+/* text-transform */
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+
+/* color-background */
+
+.background-color-gray {
+    background-color: #f2f2f2;
+}
+
+.background-color-secondary {
+    background-color: var(--background-second);
+}
+
+.background-color-black {
+    background-color: var(--background-black);
+}
+
+
+
+/* Margins */
+.margin-top-1 {
+    margin-top: 1em;
+}
+
+.margin-top-2 {
+    margin-top: 2em;
+}
+
+.margin-top-5 {
+    margin-top: 5em;
+}
+
+.margin-bottom-05{
+    margin-bottom: 0.5em;
+}
+
+.margin-bottom-1{
+    margin-bottom: 1em;
+}
+
+.margin-bottom-2{
+    margin-bottom: 2em;
+}
+
+
+
+/* PADRÕES DE PÁGINAS */
+
+.div_search_results{
+    border-bottom: solid 1px #ddd;
+    padding: 2em 2em;
+}
+
+:root{
+    --background-second: #6653ff;
+}
+
+.div-datas::before{
+    content: "";
+    display: block;
+    width: 8em;
+    height: 0.8em;
+    background-color: black;
+    margin-bottom: 1em;
+}
+
+.div-content-area h1 {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 125%;
+    font-family: var(--font-family-inter);
+    width: fit-content;
+    /* margin: 0; */
+}
+
+.div-content-area h2 {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 125%;
+    font-family: var(--font-family-inter);
+    width: fit-content;
+    /* margin: 0; */
+}
+
+.div-content-area h3 {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 125%;
+    font-family: var(--font-family-inter);
+    width: fit-content;
+    /* margin: 0; */
+}
+
+
+.div-content-area p {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 30px;
+    font-family: var(--font-family-inter);
+    width: fit-content;
+    /* margin: 0; */
+}

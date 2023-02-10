@@ -1,0 +1,36 @@
+.div-data-new::after {
+    content: "";
+    background: linear-gradient(180deg, transparent 0, rgba(0, 0, 0, .05) 22%, rgba(0, 0, 0, .17) 38%, rgba(0, 0, 0, .31) 49%, rgba(0, 0, 0, .65) 67%, rgba(0, 0, 0, .81) 77%, rgba(0, 0, 0, .91) 85%, rgba(0, 0, 0, .97) 97%, #000);
+    height: 27em;
+    position: absolute;
+    width: -webkit-fill-available;
+    z-index: 0;
+}
+
+.data-new {
+    z-index: 5;
+}
+
+.div-comments {
+    border: 10px solid #6653FF;
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
+    margin-bottom: 10em;
+    padding: 1em;
+}
+
+.div-space-comment {
+    border: solid 1px #ddd;
+    padding: 1em;
+}
+
+.add_commentary {
+    padding: 1em;
+    resize: none;
+}
+
+.button-submit-comment {
+    border: none;
+    padding: 0.5em 3.5em;
+
+}

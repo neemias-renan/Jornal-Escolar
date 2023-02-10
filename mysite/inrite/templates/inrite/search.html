@@ -1,0 +1,34 @@
+{% extends "inrite/base.html" %}
+{% load static %}
+
+{% block statics %}
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
+<!-- <script src="{% static 'inrite/js/animations.js' %}"></script> -->
+{% endblock statics %}
+
+{% block content %}
+<section class="padding-default">
+    <h3 class="fs-h3 bold">{{input_search}}</h3>
+    <!-- <p class="fs-p-16 font-color-secundary margin-top-1 edition-tag">Todo conteúdo da edição</p> -->
+
+    {% for news in all_news %}
+    <a href="{% url 'inrite:new' news.pk %}">
+        <div class="width-100 row margin-top-2 gap-4 div_search_results">
+            <div class="height-15 width-50">
+                <div class="width-100 height-100p background-cover" style="background-image: url('{{news.image.url}}')">
+                </div>
+            </div>
+
+            <div class="width-40">
+                <h5 class="fs-h6 uppercase bold">{{ news.title }}</h5>
+                <p class="fs-p-16 font-color-secundary">{{news.author.name}} <span class="font-color-gray">| {{news.date}} </span></p>
+            </div>
+
+            <div class="width-30">
+                <p class="fs-p-18 font-brygada font-color-gray">{{news.description}}</p>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</section>
+{% endblock content %}

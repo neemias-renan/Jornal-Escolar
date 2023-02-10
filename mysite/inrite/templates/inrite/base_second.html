@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Inrite</title>
+    {% load static %}
+    {% block statics %}{% endblock statics %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base-header.css' %}">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="justify-content-space-between row padding-default height-5 background-color-black ">
+                <a href="{% url 'inrite:index' %}" class="column justify-content-center"><img class="width-7em  display-table" src="{% static 'images/svg/logo-max.svg' %}"></a>
+
+                <ul class="row height-5">
+                    <li class="row justify-content-center ol-search">
+                        
+                        <form  class="fs-p-18 bold uppercase padding-20px search" action="{% url 'inrite:search' %}" method="post">
+                            {% csrf_token %}
+                            <p class="font-color-white">Buscar</p>
+                            <input type="text" name="search" class="fs-p-18 bold uppercase width-100 input-search font-color-white" placeholder="Busque aqui">
+                        </form>
+                    </li>
+                    <li class="column justify-content-center background-color-secondary"><a href="{% url 'inrite:manager'%}" class="fs-p-18 bold uppercase padding-20px font-color-white">Criar Noticia</a></li>
+                </ul>
+            </div>           
+        </div>
+    </header>
+
+
+    <main class=""> 
+        {% block content %}{% endblock content %}
+    </main> 
+
+    <!-- <footer>
+        <div class="container">
+            <p>Copyright © The Intercept</p>
+        </div>
+    </footer> -->
+</body>
+
+</html>

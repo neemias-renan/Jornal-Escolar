@@ -1,0 +1,51 @@
+{% extends "inrite/base_second.html" %}
+{% load static %}
+{% load markdown_tag %}
+
+{% block statics %}
+<link rel="stylesheet" href="{% static 'css/manager.css' %}">
+<!-- <script src="{% static 'inrite/js/animations.js' %}"></script> -->
+{% endblock statics %}
+
+{% block content %}
+<section class="padding-default margin-top-5 margin-bottom-2">
+    <h1 class="fs-h5">Criar Noticia</h1>
+    <form class="column gap-3" action="{% url 'inrite:manager' %}" method="post">
+        {% csrf_token %}
+        <div class="column gap-1">
+            <label for="edition_title" class="fs-p-16">Edição da Notícia</label>
+            <select class="justify-content-center fs-p-18 bold uppercase padding-manager-inputs"
+                name="edition_select" required>
+                <option class="fs-p-18 bold uppercase link-li height-5" disabled selected="selected">Escolha a Edição
+                </option>
+                <option class="fs-p-18 bold uppercase link-li height-5" value="new_edition">Nova Edição</option>
+                {% for edition in all_editions %}
+                <option class="fs-p-18 bold uppercase link-li height-5" value="{{edition.title}}">{{edition.title}}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="column gap-1">
+            <label for="news_title" class="fs-p-16">Nome da Edição:</label>
+            <input class="fs-p-18 padding-manager-inputs width-all height-2" name="edition_new">
+        </div>
+
+        <div class="column gap-1">
+            <label for="news_title" class="fs-p-16">Título da Notícia:</label>
+            <textarea class="fs-p-18 padding-manager-inputs width-all height-5" name="news_title"></textarea>
+        </div>
+
+        <div class="column gap-1">
+            <label for="news_description" class="fs-p-16">Descricao da Notícia:</label>
+            <textarea class="fs-p-18 padding-manager-inputs width-all height-30" name="news_description"></textarea>
+        </div>
+
+        <div class="column gap-1">
+            <label for="news_content" class="fs-p-16">Conteúdo da Notícia:</label>
+            <textarea class="fs-p-18 padding-manager-inputs width-all height-30" name="news_content"></textarea>
+            <input class="uppercase bold font-color-white fs-p-18 background-color-secondary justify-content-center button-submit-comment margin-top-1" type="submit" value="Criar">
+        </div>
+    </form>
+</section>
+{% endblock content %}
