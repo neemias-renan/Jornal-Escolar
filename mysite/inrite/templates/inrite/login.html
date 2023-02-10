@@ -9,12 +9,15 @@
 {% block content %}
 <section class="padding-default margin-top-5">
     <h2 class="fs-h2 bold">Login</h2>
-    <form class="width-60 column gap-1" action="{% url 'inrite:login' %}" method="post">
+    <form class="width-60 column gap-1 margin-top-1" action="{% url 'inrite:login' %}" method="post">
         {% csrf_token %}
-        <input class="fs-p-18 padding-inputs width-all height-2" type="email" name="email" placeholder="Digite seu email">
-        <input class="fs-p-18 padding-inputs width-all height-2" type="password" name="password">
-        <p>{{message}}</p>
-        <button class="fs-p-18 padding-inputs width-all height-2" type="submit">Login</button>
-    </form>
+        <input class="fs-p-18 padding-inputs width-all height-2" type="email" name="email" placeholder="Digite seu email" required>
+        <input class="fs-p-18 padding-inputs width-all height-2" type="password" name="password" required>
+        <p class="fs-p-16 font-color-red width-all justify-content-center row">{{message}}</p>
+        <button class="fs-p-18 padding-inputs width-all height-2 background-color-secondary font-color-white border-none" type="submit">Fazer Login</button>
+    </form> 
+    <div class="width-min margin-top-1">
+        <a href="{% url 'inrite:signup' %}"><h3 class="fs-p-18 font-color-secundary ">Torne-se Membro</h3></a>
+    </div>
 </section>
 {% endblock content %}

@@ -59,10 +59,12 @@
 }
 
 .ol-search .search:hover{
-    width: 26em;
+    
+    width: max-content;
+
 }
 .ol-search .search:focus{
-    width: 26em;
+    width: -webkit-fill-available;
 }
 
 .input-search{
@@ -85,7 +87,7 @@
 
 @media (max-width:1500px) {
     .ol-search .search:hover{
-        width: 26em;
+        width: -webkit-fill-available;
     }
     /* .ol-search .search:hover p, .ol-search .search:hover .news-li{
         display: none;

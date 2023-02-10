@@ -16,37 +16,54 @@
             <div class="background-cover justify-content-space-between column padding-default element-image height-30"
                 style="background-image: url({{first_new.image.url}});">
                 <img class="logo-cover width-7em display-table" src="{% static 'images/svg/logo-max.svg' %}">
-                <div class="padding-bottom-4em">
-                    <h3 class="fs-h3 font-color-white display-table z-index-2 position-relative width-60">{{first_new.title}}</h3>
-                    <p class="fs-p-16 font-color-secundary display-table z-index-2 position-relative margin-top-1">{{first_new.author.name}}</p>
+                <div class="padding-bottom-4em div-title-new">
+                    <h3 class="fs-h3 font-color-white display-table z-index-2 position-relative width-60  div-title-new">
+                        {{first_new.title}}</h3>
+                    <p class="fs-p-16 font-color-secundary display-table z-index-2 position-relative margin-top-1">
+                        Por {{first_new.author.name}} <span class="font-color-gray">• Última Notícia</span></p>
                 </div>
             </div>
 
-            <nav class="height-5 padding-default justify-content-space-between row">
-                <form class="row height-100p" action="{% url 'inrite:index' %}" method="post">
+            <nav class="height-5 padding-default justify-content-space-between row" id="menu-bar">
+                <form class="row height-100p" id="form-select" action="{% url 'inrite:index' %}" method="post">
                     {% csrf_token %}
-                    <select class="justify-content-center fs-p-18 bold uppercase select-edition width-14em" name="select" onchange="this.form.submit()">
-                            <option class="fs-p-18 bold uppercase link-li height-5"  disabled selected="selected">Outras Edições</option>
+                    <select class="justify-content-center fs-p-18 bold uppercase select-edition width-14em"
+                        name="select" onchange="this.form.submit()">
+                        <option class="fs-p-18 bold uppercase link-li height-5" disabled selected="selected">Outras
+                            Edições</option>
                         {% for edition in all_editions %}
-                            <option class="fs-p-18 bold uppercase link-li height-5" value="{{edition.title}}">{{edition.title}}</option>
+                        <option class="fs-p-18 bold uppercase link-li height-5" value="{{edition.title}}">
+                            {{edition.title}}</option>
                         {% endfor %}
                     </select>
                 </form>
 
-                <ul class="row height-100p">
+                <ul class="row height-100p" id="ul-menu-nav">
                     <li class="row justify-content-center background-color-gray ol-search">
-                        
-                        <form  class="fs-p-18 bold uppercase padding-20px search bolder-rigth-gray" action="{% url 'inrite:search' %}" method="post">
+
+                        <form class="fs-p-18 bold uppercase padding-20px search bolder-rigth-gray"
+                            action="{% url 'inrite:search' %}" method="post" id="form-search">
                             {% csrf_token %}
                             <p>Buscar</p>
-                            <input type="text" name="search" class="fs-p-18 bold uppercase width-100 input-search" placeholder="Busque aqui">
+                            <input type="text" name="search" class="fs-p-18 bold uppercase width-100 input-search"
+                                placeholder="Busque aqui">
                         </form>
                     </li>
                     {% if user.is_authenticated %}
-                    <li class="column justify-content-center background-color-gray bolder-rigth-gray news-li"><a href="{% url 'inrite:manager'%}" class="fs-p-18 bold uppercase padding-20px">Criar Noticia</a></li>
-                    <li class="column justify-content-center background-color-secondary login-li"><a href="{% url 'inrite:logout'%}" class="fs-p-18 bold uppercase padding-20px font-color-white">Logout</a></li>
+                    <li class="column justify-content-center background-color-gray bolder-rigth-gray news-li"><a
+                            href="{% url 'inrite:manager'%}" class="fs-p-18 bold uppercase padding-20px">Gerenciar</a>
+                    </li>
+                    <li class="column justify-content-center background-color-secondary user-li"><a href="#"
+                            class="fs-p-18 bold uppercase padding-20px font-color-white name-user">Olá, {{user.profile.name}}</a>
+                    </li>
+                    <li class="column justify-content-center background-color-gray logout-li"><a
+                            href="{% url 'inrite:logout'%}"
+                            class="fs-p-18 bold uppercase padding-20px font-color-white"><img
+                                src="{% static 'images/svg/logout.svg' %}" alt=""></a></li>
                     {% else %}
-                    <li class="column justify-content-center background-color-secondary login-li"><a href="{% url 'inrite:login'%}" class="fs-p-18 bold uppercase padding-20px font-color-white">Login</a></li>
+                    <li class="column justify-content-center background-color-secondary login-li"><a
+                            href="{% url 'inrite:login'%}"
+                            class="fs-p-18 bold uppercase padding-20px font-color-white">Login</a></li>
                     {% endif %}
                 </ul>
             </nav>
@@ -54,15 +71,13 @@
     </header>
 
 
-    <main class="margin-top-5"> 
+    <main class="margin-top-5">
         {% block content %}{% endblock content %}
-    </main> 
+    </main>
 
-    <!-- <footer>
-        <div class="container">
-            <p>Copyright © The Intercept</p>
-        </div>
-    </footer> -->
+
+
+   <script src="{% static 'js/interations.js' %}"></script>
 </body>
 
 </html>

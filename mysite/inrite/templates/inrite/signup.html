@@ -2,16 +2,26 @@
 {% load static %}
 
 {% block statics %}
-<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
 <!-- <script src="{% static 'inrite/js/animations.js' %}"></script> -->
 {% endblock statics %}
 
 {% block content %}
 <section class="padding-default margin-top-5">
     <h2 class="fs-h2 bold">Cadastre-se</h2>
-    <form action="">
-        <input type="email" placeholder="Digite seu email">
-        <input type="password" name="" id="">
+    <form class="width-60 column gap-1 margin-top-1" action="{% url 'inrite:signup' %}" method="post">
+        {% csrf_token %}
+        <input class="fs-p-18 padding-inputs width-all height-2" type="text" name="name" placeholder="Digite seu Nome" required>
+        <input class="fs-p-18 padding-inputs width-all height-2" type="email" name="email" placeholder="Digite seu email" required>
+        <input class="fs-p-18 padding-inputs width-all height-2" type="password" name="password"  placeholder="Digite sua Senha"  required>
+        
+        {% if account_created == False %}
+        <p class="fs-p-16 font-color-red width-all justify-content-center row">{{message}}</p>
+        <button class="fs-p-18 padding-inputs width-all height-2  background-color-secondary font-color-white border-none" type="submit">Cadastrar-se</button>
+        {% else %}
+        <p class="fs-p-16 font-color-green width-all justify-content-center row">{{message}}</p>
+        <a href="{% url 'inrite:login' %}"><button class="fs-p-18 padding-inputs width-all height-2  background-color-secondary font-color-white border-none" type="button">Fazer Login Agora</button></a>
+        {% endif %}
     </form>
 </section>
 {% endblock content %}

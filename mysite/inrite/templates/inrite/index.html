@@ -14,13 +14,13 @@
     {% for news in all_news %}
     <a href="{% url 'inrite:new' news.id %}">
         <div class="div-news width-100 row margin-top-2 gap-2">
-            <div class="height-25 width-40">
+            <div class="height-25 width-40 div-img-news">
                 <div class="width-100 height-100p background-cover" style="background-image: url('{{news.image.url}}')">
                 </div>
             </div>
 
-            <div class="div-datas width-50">
-                <h5 class="fs-h5 uppercase bold">{{ news.title }}</h5>
+            <div class="div-datas width-50 ">
+                <h5 class="fs-h5 uppercase bold h5-title-new">{{ news.title }}</h5>
                 <p class="fs-p-16 font-color-secundary">{{news.author.name}}</p>
                 <p class="fs-p-18 font-brygada font-color-gray">{{news.description}}</p>
             </div>

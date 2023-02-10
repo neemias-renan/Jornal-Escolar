@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import View
 
-from .models import Comment, Edition, News
+from .models import Comment, Edition, News, Profile
 
 
 class IndexView(View):
@@ -118,9 +118,7 @@ class ManagerView(View):
 
 class LoginView(View):
     def get(self, request, *args, **kwargs):
-        
-        context = {}
-        return render(request, 'inrite/login.html', context)
+        return render(request, 'inrite/login.html')
     
     def post(self, request, *args, **kwargs):
         email = request.POST.get('email')
@@ -144,8 +142,32 @@ class LogoutView(View):
 
 class SignupView(View):
     def get(self, request, *args, **kwargs):
-        context = {}
+        context = {
+            "account_created":False,
+        }
         return render(request, 'inrite/signup.html', context)
 
     def post(self, request, *args, **kwargs):
-        return HttpResponseRedirect(reverse('inrite:index'))
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        userExists = User.objects.filter(username=email).first()
+
+        if userExists:
+            context = {
+                "message":"Já existe um usuário com esse email",
+                 "account_created":False,
+            }
+            return render(request, 'inrite/signup.html', context)
+
+        user_created = User.objects.create_user(username=email, password=password)
+        profile_created = Profile.objects.create(user=user_created, name = name)
+
+        user_created.save()
+        profile_created.save()
+        context = {
+                "message":"Sua conta foi criada. Vamos Fazer Login!",
+                "account_created":True,
+            }
+        return render(request, 'inrite/signup.html', context)
