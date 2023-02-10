@@ -2,16 +2,19 @@
 {% load static %}
 
 {% block statics %}
-<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
 <!-- <script src="{% static 'inrite/js/animations.js' %}"></script> -->
 {% endblock statics %}
 
 {% block content %}
 <section class="padding-default margin-top-5">
     <h2 class="fs-h2 bold">Login</h2>
-    <form action="">
-        <input type="email" placeholder="Digite seu email">
-        <input type="password" name="" id="">
+    <form class="width-60 column gap-1" action="{% url 'inrite:login' %}" method="post">
+        {% csrf_token %}
+        <input class="fs-p-18 padding-inputs width-all height-2" type="email" name="email" placeholder="Digite seu email">
+        <input class="fs-p-18 padding-inputs width-all height-2" type="password" name="password">
+        <p>{{message}}</p>
+        <button class="fs-p-18 padding-inputs width-all height-2" type="submit">Login</button>
     </form>
 </section>
 {% endblock content %}

@@ -1,9 +1,13 @@
 
-from django.shortcuts import render, get_object_or_404
-from django.views import View
-from .models import Edition, News, Comment
-from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
+from django.views import View
+
+from .models import Comment, Edition, News
+
 
 class IndexView(View):
     def get(self, request):
@@ -83,7 +87,9 @@ class NewsView(View):
     def post(self, request, *args, **kwargs):
         new = get_object_or_404(News, pk=kwargs['pk'])
         comment = request.POST.get("comment")
-        Comment.objects.create(body=comment,news = new)
+        author = request.user
+
+        Comment.objects.create(body=comment,news = new, author = author)
         return HttpResponseRedirect(reverse('inrite:new', kwargs={'pk': kwargs['pk']}))
     
 class ManagerView(View):
@@ -105,16 +111,35 @@ class ManagerView(View):
         new_title= request.POST.get("news_title")
         new_description= request.POST.get("news_description")
         new_content= request.POST.get("news_content")
+        author = request.user
 
-        News.objects.create(title = new_title, body = new_content, description=new_description, edition = edition)
+        News.objects.create(title = new_title, body = new_content, description=new_description, edition = edition, author = author.profile)
         return HttpResponseRedirect(reverse('inrite:index'))
 
 class LoginView(View):
     def get(self, request, *args, **kwargs):
+        
         context = {}
         return render(request, 'inrite/login.html', context)
     
     def post(self, request, *args, **kwargs):
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=email, password=password)
+
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect(reverse('inrite:index'))
+        else:
+            context = {
+                "message": "Usuário ou senha incorretos!",
+            }            
+            return render(request, 'inrite/login.html', context)
+
+class LogoutView(View):
+    def get(self, request, *args, **kwargs):
+        logout(request)
         return HttpResponseRedirect(reverse('inrite:index'))
 
 class SignupView(View):

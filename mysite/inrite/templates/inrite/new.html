@@ -41,12 +41,14 @@
             </div>            
             {% endfor %}
 
+            {% if user.is_authenticated %}
             <form class="div-space-comment margin-top-1 column align-end" method="post" action="{% url 'inrite:new' new.pk %}">
                 {% csrf_token %}
                 <textarea class="width-all fs-p-18 bold add_commentary height-5" maxlength="350" name="comment" placeholder="Escreva um comentário! Nós queremos saber sua opinião" required></textarea>
                 <button class="uppercase bold font-color-white fs-p-18 background-color-secondary justify-content-center button-submit-comment margin-top-1" type="submit">Enviar</button>
             </form>     
-
+            {% endif %}
+            
 
         </div>
     </div>

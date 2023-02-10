@@ -25,8 +25,12 @@
                             <input type="text" name="search" class="fs-p-18 bold uppercase width-100 input-search font-color-white" placeholder="Busque aqui">
                         </form>
                     </li>
-                    <li class="column justify-content-center   news-li"><a href="{% url 'inrite:manager'%}" class="fs-p-18 bold uppercase font-color-white padding-20px">Criar Noticia</a></li>
+                    {% if user.is_authenticated %}
+                    <li class="column justify-content-center background-color-gray news-li"><a href="{% url 'inrite:manager'%}" class="fs-p-18 bold uppercase padding-20px">Criar Noticia</a></li>
+                    <li class="column justify-content-center background-color-secondary login-li"><a href="{% url 'inrite:logout'%}" class="fs-p-18 bold uppercase padding-20px font-color-white">Logout</a></li>
+                    {% else %}
                     <li class="column justify-content-center background-color-secondary login-li"><a href="{% url 'inrite:login'%}" class="fs-p-18 bold uppercase padding-20px font-color-white">Login</a></li>
+                    {% endif %}
                 </ul>
             </div>           
         </div>
